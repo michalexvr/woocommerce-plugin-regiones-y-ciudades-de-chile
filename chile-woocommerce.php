@@ -5,7 +5,7 @@ Plugin Name: Regiones de Chile para WooCommerce
 Plugin URI: https://mmrm.cl
 Description: Con este plugin o complemento podrás utilizar las Regiones de Chile para mejorar la experiencia de envíos.
 Version: 0.4
-Author: Melvin Ramos <info@conchalevale.cl>, Tuneado y agregadas las ciudades por Michael Venegas <contacto@onesla.com>
+Author: Melvin Ramos <info@conchalevale.cl>, Plugin Tuneado y agregadas las comunas por Michael Venegas <contacto@onesla.com>
 Author URI: https://mmrm.cl/
 Contributors: melvisnap, michalexvr
 License: GPLv3
@@ -17,7 +17,7 @@ Nueva versión, incluye las comunas de Chile.
 */
 /*
 *      Copyright 2018 Cónchale vale <info@conchalevale.cl>
-*	   2019 Onesla SPA <contacto@onesla.com>
+*	   2020 Onesla SPA <contacto@onesla.com>
 *
 *      This program is free software; you can redistribute it and/or modify
 *      it under the terms of the GNU General Public License as published by
@@ -780,6 +780,14 @@ function ciudades_chilenas( $fields ) {
 			  jQuery('#select2-billing_state-container').empty().append(ciudades[i].region);
 			}
 		  }
+		});
+		jQuery('.mmrm').change(function(){
+			jQuery('#billing_state').empty();
+			for (var i = 0; i < ciudades.length; i++) {
+				if (ciudades[i].region == jQuery('#billing_state').val()) {
+					jQuery('#billing_state').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
+				}
+			}
 		});
 	  });	
 	");
