@@ -781,6 +781,15 @@ function ciudades_chilenas( $fields ) {
 			}
 		  }
 		});
+		jQuery('#shipping_city').change(function(){
+			for (var i = 0; i < ciudades.length; i++) {
+			  if (ciudades[i].ciudad == jQuery('#shipping_city').val()) {
+				jQuery('#shipping_state').val(ciudades[i].region).prop('selected', true);
+				jQuery('#select2-shipping_state-container').attr('title',ciudades[i].region);
+				jQuery('#select2-shipping_state-container').empty().append(ciudades[i].region);
+			  }
+			}
+		  });		
 		jQuery('.mmrm').change(function(){
 			jQuery('#billing_state').empty();
 			for (var i = 0; i < ciudades.length; i++) {
@@ -789,8 +798,28 @@ function ciudades_chilenas( $fields ) {
 				}
 			}
 		});
+		jQuery('#shipping_state').change(function(){
+			jQuery('#billing_state').empty();
+			for (var i = 0; i < ciudades.length; i++) {
+				if (ciudades[i].region == jQuery('#billing_state').val()) {
+					jQuery('#billing_state').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
+				}
+			}
+		});		
 	  });	
 	");
+	return $fields;
+}
+
+function perfil_ciudades_chilenas ( $fields ) {
+	$city_args = wp_parse_args( get_ciudades_chilenas(), $fields['city'] );
+	$fields['city'] = $city_args;
+	$fields['city']['class'][] = 'mmcm';
+	wc_enqueue_js( "
+	jQuery( ':input.wc-enhanced-select' ).filter( ':not(.enhanced)' ).each( function() {
+			var select2_args = { minimumResultsForSearch: 5 };
+			jQuery( this ).select2( select2_args ).addClass( 'enhanced' );
+	});" );
 	return $fields;
 }
 
@@ -811,5 +840,7 @@ function rdcw_change_checkout_fields( $fields ) {
 
 add_filter('woocommerce_checkout_fields' , 'rdcw_change_checkout_fields');
 add_filter('woocommerce_states', 'rdcw_regiones_de_chile');
-add_filter( 'woocommerce_checkout_fields', 'ciudades_chilenas' );
+add_filter('woocommerce_checkout_fields', 'ciudades_chilenas');
+add_filter('woocommerce_default_address_fields', 'perfil_ciudades_chilenas');
+
 ?>
