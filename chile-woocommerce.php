@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: Regiones de Chile para WooCommerce
-Plugin URI: https://mmrm.cl
+Plugin URI: https://www.onesla.com
 Description: Con este plugin o complemento podrás utilizar las Regiones de Chile para mejorar la experiencia de envíos.
 Version: 0.4
 Author: Melvin Ramos <info@conchalevale.cl>, Plugin Tuneado y agregadas las comunas por Michael Venegas <contacto@onesla.com>
-Author URI: https://mmrm.cl/
+Author URI: https://www.onesla.com
 Contributors: melvisnap, michalexvr
 License: GPLv3
 Requires at least: 4.0 +
@@ -17,7 +17,7 @@ Nueva versión, incluye las comunas de Chile.
 */
 /*
 *      Copyright 2018 Cónchale vale <info@conchalevale.cl>
-*	   2020 Onesla SPA <contacto@onesla.com>
+*      		2020 Onesla SPA <contacto@onesla.com>
 *
 *      This program is free software; you can redistribute it and/or modify
 *      it under the terms of the GNU General Public License as published by
@@ -780,17 +780,13 @@ function ciudades_chilenas( $fields ) {
 			  jQuery('#select2-billing_state-container').attr('title',ciudades[i].region);
 			  jQuery('#select2-billing_state-container').empty().append(ciudades[i].region);
 			}
+			if (ciudades[i].ciudad == jQuery('#select2-shipping_city-container').attr('title')) {
+			  jQuery('.mmrms').val(ciudades[i].region).prop('selected', true);
+			  jQuery('#select2-shipping_state-container').attr('title',ciudades[i].region);
+			  jQuery('#select2-shipping_state-container').empty().append(ciudades[i].region);
+			}
 		  }
 		});
-		jQuery('.mmcm').change(function(){
-			for (var i = 0; i < ciudades.length; i++) {
-			  if (ciudades[i].ciudad == jQuery('#select2-shipping_city-container').attr('title')) {
-				jQuery('.mmrms').val(ciudades[i].region).prop('selected', true);
-				jQuery('#select2-shipping_state-container').attr('title',ciudades[i].region);
-				jQuery('#select2-shipping_state-container').empty().append(ciudades[i].region);
-			  }
-			}
-		  });		
 		jQuery('.mmrm').change(function(){
 			jQuery('#billing_city').empty();
 			for (var i = 0; i < ciudades.length; i++) {

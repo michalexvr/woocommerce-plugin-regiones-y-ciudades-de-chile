@@ -1,6 +1,5 @@
-# Regiones de Chile para WooCommerce
+# Regiones y Ciudades de Chile para WooCommerce
 Contributors: melvisnap, michalexvr
-Donate link: https://www.paypal.me/melvinmrm
 Tags: woocommerce, chile, regiones y ciudades, envios, shipping, regions, cities
 Requires at least: 4.0
 Tested up to: 5.2.1
@@ -12,7 +11,7 @@ Agrega las regiones y ciudades de Chile al proceso de pago de WooCommerce
 
 ### Description
 
-Añade al campo `states` las regiones de Chile (16 regiones y 345 ciudades), para ser utilizados en los métodos de envío, carrito y checkout.
+Añade al campo `states` y `city` las regiones y ciudades de Chile respectivamente (16 regiones y 345 ciudades), para ser utilizados en los métodos de envío, carrito y checkout.
 
 Te permitirá crear reglas para cada región, ajustar precios y configurar envíos gratuitos.
 
@@ -33,6 +32,10 @@ Para el desarrollo de este plugin fue utilizada la información disponible en lo
 
 ### Changelog
 
+#### 0.6
+
+Añadidas las ciudades y un pequeño JS que autoselecciona la región al seleccionar una ciudad y otro que filtra las comunas segun la región seleccionada.
+
 #### 0.5
 
 Añadidas las ciudades y un pequeño JS que autoselecciona la región al seleccionar una ciudad.
@@ -40,12 +43,13 @@ Añadidas las ciudades y un pequeño JS que autoselecciona la región al selecci
 #### 0.4
 
 * Cambio en el orden del changelog (cambios más recientes arriba).
+* Probado en WP 5.4.x y WC 4.0.x
 * Probado en WC 3.6.x
 * Probado en WP 5.2.1
 
 #### 0.3 
 
-Añadida información más específica a la documentación del plugin, también dejo enlace para [__hacer una donación__](https://www.paypal.me/melvinmrm). Tu donación ayudará al desarrollo futuro del plugin. Gracias de antemano.
+Añadida información más específica a la documentación del plugin
 Próximas versiones se incluirán `Preguntas frecuentes` y capturas de pantalla.
 
 Esta actualización no incluye ajustes en el núcleo del plugin, por lo que no va a afectar su funcionamiento de ninguna manera.
@@ -69,4 +73,4 @@ Probada en las últimas versiones de wordpress y woocommerce.
 #### 0.0.1
 
 Versión de Lanzamiento 31/03/2018
-Versión actual 30/11/2019
+Versión actual 25/04/2020
