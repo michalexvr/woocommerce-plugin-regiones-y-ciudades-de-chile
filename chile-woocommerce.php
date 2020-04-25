@@ -775,16 +775,16 @@ function ciudades_chilenas( $fields ) {
 		jQuery('.mmcm').change(function(){
 		  for (var i = 0; i < ciudades.length; i++) {
 			if (ciudades[i].ciudad == jQuery('#billing_city').val()) {
-			  jQuery('#billing_state').val(ciudades[i].region).prop('selected', true);
+			  jQuery('.mmrm').val(ciudades[i].region).prop('selected', true);
 			  jQuery('#select2-billing_state-container').attr('title',ciudades[i].region);
 			  jQuery('#select2-billing_state-container').empty().append(ciudades[i].region);
 			}
 		  }
 		});
-		jQuery('#shipping_city').change(function(){
+		jQuery('.mmcm').change(function(){
 			for (var i = 0; i < ciudades.length; i++) {
 			  if (ciudades[i].ciudad == jQuery('#shipping_city').val()) {
-				jQuery('#shipping_state').val(ciudades[i].region).prop('selected', true);
+				jQuery('.mmrms').val(ciudades[i].region).prop('selected', true);
 				jQuery('#select2-shipping_state-container').attr('title',ciudades[i].region);
 				jQuery('#select2-shipping_state-container').empty().append(ciudades[i].region);
 			  }
@@ -798,11 +798,11 @@ function ciudades_chilenas( $fields ) {
 				}
 			}
 		});
-		jQuery('#shipping_state').change(function(){
-			jQuery('#billing_state').empty();
+		jQuery('.mmrms').change(function(){
+			jQuery('.mmrms').empty();
 			for (var i = 0; i < ciudades.length; i++) {
-				if (ciudades[i].region == jQuery('#billing_state').val()) {
-					jQuery('#billing_state').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
+				if (ciudades[i].region == jQuery('.mmrms').val()) {
+					jQuery('.mmrms').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
 				}
 			}
 		});		
@@ -831,6 +831,7 @@ function rdcw_change_checkout_fields( $fields ) {
 
 	$fields['shipping']['shipping_state']['placeholder'] = 'Seleccione una Región';
 	$fields['shipping']['shipping_state']['label'] = 'Región';
+	$fields['shipping']['shipping_state']['class'][] = 'mmrms';
 
 	unset($fields['billing']['billing_postcode']);
 	unset($fields['shipping']['shipping_postcode']);
