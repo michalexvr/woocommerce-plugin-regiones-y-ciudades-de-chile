@@ -753,7 +753,7 @@ function ciudades_chilenas( $fields ) {
 		  {ciudad:'Cisnes',region:'Aysén del General Carlos Ibáñez del Campo'},
 		  {ciudad:'Guaitecas',region:'Aysén del General Carlos Ibáñez del Campo'},
 		  {ciudad:'Cochrane',region:'Aysén del General Carlos Ibáñez del Campo'},
-		  {ciudad:'O'higgins',region:'Aysén del General Carlos Ibáñez del Campo'},
+		  {ciudad:'O\'higgins',region:'Aysén del General Carlos Ibáñez del Campo'},
 		  {ciudad:'Tortel',region:'Aysén del General Carlos Ibáñez del Campo'},
 		  {ciudad:'Coihaique',region:'Aysén del General Carlos Ibáñez del Campo'},
 		  {ciudad:'Lago Verde',region:'Aysén del General Carlos Ibáñez del Campo'},
@@ -772,9 +772,10 @@ function ciudades_chilenas( $fields ) {
 		  {ciudad:'Torres del Paine',region:'Magallanes y de la Antartica Chilena'},
 		  {ciudad:'Cabildo',region:'Valparaíso'}
 		];
+
 		jQuery('.mmcm').change(function(){
 		  for (var i = 0; i < ciudades.length; i++) {
-			if (ciudades[i].ciudad == jQuery('#billing_city').val()) {
+			if (ciudades[i].ciudad == jQuery('#select2-billing_city-container').attr('title')) {
 			  jQuery('.mmrm').val(ciudades[i].region).prop('selected', true);
 			  jQuery('#select2-billing_state-container').attr('title',ciudades[i].region);
 			  jQuery('#select2-billing_state-container').empty().append(ciudades[i].region);
@@ -783,7 +784,7 @@ function ciudades_chilenas( $fields ) {
 		});
 		jQuery('.mmcm').change(function(){
 			for (var i = 0; i < ciudades.length; i++) {
-			  if (ciudades[i].ciudad == jQuery('#shipping_city').val()) {
+			  if (ciudades[i].ciudad == jQuery('#select2-shipping_city-container').attr('title')) {
 				jQuery('.mmrms').val(ciudades[i].region).prop('selected', true);
 				jQuery('#select2-shipping_state-container').attr('title',ciudades[i].region);
 				jQuery('#select2-shipping_state-container').empty().append(ciudades[i].region);
@@ -791,18 +792,18 @@ function ciudades_chilenas( $fields ) {
 			}
 		  });		
 		jQuery('.mmrm').change(function(){
-			jQuery('#billing_state').empty();
+			jQuery('#billing_city').empty();
 			for (var i = 0; i < ciudades.length; i++) {
-				if (ciudades[i].region == jQuery('#billing_state').val()) {
-					jQuery('#billing_state').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
+				if (ciudades[i].region == jQuery('#select2-billing_state-container').attr('title')) {
+					jQuery('#billing_city').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
 				}
 			}
 		});
 		jQuery('.mmrms').change(function(){
-			jQuery('.mmrms').empty();
+			jQuery('#shipping_city').empty();
 			for (var i = 0; i < ciudades.length; i++) {
-				if (ciudades[i].region == jQuery('.mmrms').val()) {
-					jQuery('.mmrms').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
+				if (ciudades[i].region == jQuery('#select2-shipping_state-container').attr('title')) {
+					jQuery('#shipping_city').append('<option value=\"'+ ciudades[i].ciudad +'\"> ' + ciudades[i].ciudad + ' </option>');
 				}
 			}
 		});		
@@ -812,7 +813,7 @@ function ciudades_chilenas( $fields ) {
 }
 
 function perfil_ciudades_chilenas ( $fields ) {
-	$city_args = wp_parse_args( get_ciudades_chilenas(), $fields['city'] );
+	$city_args = wp_parse_args( ciudades_chilenas($fields), $fields['city'] );
 	$fields['city'] = $city_args;
 	$fields['city']['class'][] = 'mmcm';
 	wc_enqueue_js( "
