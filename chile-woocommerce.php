@@ -17,7 +17,7 @@ Nueva versión, incluye las comunas de Chile.
 */
 /*
 *      Copyright 2018 Cónchale vale <info@conchalevale.cl>
-*      		2020 Onesla SPA <contacto@onesla.com>
+*      Copyleft 2020 Onesla SPA <contacto@onesla.com>
 *
 *      This program is free software; you can redistribute it and/or modify
 *      it under the terms of the GNU General Public License as published by
@@ -777,11 +777,13 @@ function ciudades_chilenas( $fields ) {
 		  for (var i = 0; i < ciudades.length; i++) {
 			if (ciudades[i].ciudad == jQuery('#select2-billing_city-container').attr('title')) {
 			  jQuery('.mmrm').val(ciudades[i].region).prop('selected', true);
+			  jQuery('#billing_state').val(ciudades[i].region).prop('selected', true);
 			  jQuery('#select2-billing_state-container').attr('title',ciudades[i].region);
 			  jQuery('#select2-billing_state-container').empty().append(ciudades[i].region);
 			}
 			if (ciudades[i].ciudad == jQuery('#select2-shipping_city-container').attr('title')) {
 			  jQuery('.mmrms').val(ciudades[i].region).prop('selected', true);
+			  jQuery('#shipping_state').val(ciudades[i].region).prop('selected', true);
 			  jQuery('#select2-shipping_state-container').attr('title',ciudades[i].region);
 			  jQuery('#select2-shipping_state-container').empty().append(ciudades[i].region);
 			}
